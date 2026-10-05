@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夜猫头鹰 Night Owl | @NightOwlStocks</title>
+<meta name="description" content="夜猫头鹰 Night Owl —— 熬夜盯盘的美股 / 加密 / 港股博主。X: @NightOwlStocks">
+<style>
+  :root{
+    --bg:#0b1020; --bg2:#111a30; --card:#141d36;
+    --amber:#f0a92e; --amber-soft:#f7c873;
+    --text:#e8ecf5; --muted:#9aa4bd; --line:rgba(240,169,46,.18);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(1200px 600px at 50% -10%, #16224a 0%, var(--bg) 55%) , var(--bg);
+       color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.7; min-height:100vh;}
+  .wrap{max-width:720px;margin:0 auto;padding:48px 20px 64px}
+  header{text-align:center;padding:24px 0 8px}
+  .avatar{width:148px;height:148px;border-radius:50%;object-fit:cover;
+          border:3px solid var(--amber);box-shadow:0 0 42px rgba(240,169,46,.35)}
+  h1{font-size:2rem;margin:18px 0 4px;letter-spacing:.06em}
+  h1 .en{display:block;font-size:1rem;color:var(--amber-soft);letter-spacing:.28em;margin-top:6px;font-weight:500}
+  .handle{display:inline-block;margin:10px 0 6px;padding:6px 18px;border:1px solid var(--line);
+           border-radius:999px;color:var(--amber-soft);font-family:ui-monospace,Menlo,monospace;font-size:.95rem}
+  .tagline{color:var(--muted);font-size:.95rem;margin-top:8px}
+  .btn{display:inline-block;margin:22px 8px 0;padding:12px 34px;border-radius:999px;
+       background:var(--amber);color:#1a1206;font-weight:700;text-decoration:none;font-size:1rem;
+       box-shadow:0 6px 24px rgba(240,169,46,.35);transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--amber-soft);border:1px solid var(--line);box-shadow:none}
+  section{margin-top:44px}
+  h2{font-size:1.15rem;color:var(--amber-soft);letter-spacing:.14em;margin-bottom:14px;
+     display:flex;align-items:center;gap:10px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:14px}
+  .card h3{font-size:1.05rem;margin-bottom:6px}
+  .card h3 .en{color:var(--muted);font-weight:400;font-size:.85rem;margin-left:8px}
+  .card p{color:var(--muted);font-size:.92rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+  .disclaimer{font-size:.82rem;color:var(--muted);background:rgba(240,169,46,.06);
+              border:1px dashed var(--line);border-radius:12px;padding:16px 18px}
+  footer{margin-top:56px;text-align:center;color:var(--muted);font-size:.8rem}
+  footer a{color:var(--amber-soft);text-decoration:none}
+  .stars{position:fixed;inset:0;pointer-events:none;opacity:.5;z-index:-1}
+</style>
+</head>
+<body>
+<canvas class="stars" id="stars"></canvas>
+<div class="wrap">
+
+  <header>
+    <img class="avatar" src="data:image/jpeg;base64,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" alt="夜猫头鹰头像">
+    <h1>夜猫头鹰<span class="en">NIGHT OWL</span></h1>
+    <div><span class="handle">@NightOwlStocks</span></div>
+    <p class="tagline">🦉 熬夜盯盘的夜猫头鹰 ｜ 美股 · 加密 · 港股<br>
+    <span style="font-size:.85rem">A night owl staying up for the markets — US stocks · Crypto · HK stocks</span></p>
+    <a class="btn" href="https://x.com/NightOwlStocks" target="_blank" rel="noopener">在 X 上关注我</a>
+  </header>
+
+  <section>
+    <h2>关于 / ABOUT</h2>
+    <div class="card">
+      <p>一只昼伏夜出的猫头鹰。美股开盘是北京时间的深夜，加密市场 7×24 不打烊，港股白天开门迎客——三个市场，三种节奏，一只枭全都要盯。</p>
+      <p style="margin-top:10px">这里只记录个人的市场观察、数据拆解和思考过程：看对看错都写下来，复盘比预测重要。</p>
+      <p style="margin-top:10px;color:var(--amber-soft);font-size:.88rem">A nocturnal observer of three markets. Notes, data breakdowns and honest reviews — no calls, no hype.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>覆盖市场 / MARKETS</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>🇺🇸 美股<span class="en">US Stocks</span></h3>
+        <p>AI、半导体与科技巨头追踪，财报季拆解，盘前盘后异动记录。</p>
+      </div>
+      <div class="card">
+        <h3>₿ 加密<span class="en">Crypto</span></h3>
+        <p>BTC / ETH 链上数据观察，市场情绪与资金流向笔记。</p>
+      </div>
+      <div class="card">
+        <h3>🇭🇰 港股<span class="en">HK Stocks</span></h3>
+        <p>港股财报与打新跟踪，南向资金观察，别人不讲的我来讲。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>开更预告 / COMING SOON</h2>
+    <div class="card">
+      <p>🦉 夜猫头鹰即将开更 —— 每日三地市场速览、财报拆解、链上数据笔记，敬请期待。</p>
+      <p style="margin-top:8px"><a href="https://x.com/NightOwlStocks" target="_blank" rel="noopener" style="color:var(--amber-soft)">→ 先去 X 占个关注 @NightOwlStocks</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>声明 / DISCLAIMER</h2>
+    <div class="disclaimer">
+      本站及关联社交账号的所有内容均为个人学习记录与思考，不构成任何投资建议（Not Financial Advice）。本人没有收费群、不接付费带单、不主动私信索要资金，谨防冒充诈骗。
+    </div>
+  </section>
+
+  <footer>
+    © 2026 夜猫头鹰 Night Owl · @NightOwlStocks<br>
+    Built with <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
+  </footer>
+
+</div>
+<script>
+// 简单星空
+const c=document.getElementById('stars'),x=c.getContext('2d');
+function rs(){c.width=innerWidth;c.height=innerHeight}
+rs();addEventListener('resize',rs);
+const s=Array.from({length:90},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.3,t:Math.random()*6.28}));
+(function loop(){x.clearRect(0,0,c.width,c.height);
+ for(const p of s){p.t+=.02;x.globalAlpha=.25+.35*Math.abs(Math.sin(p.t));
+  x.fillStyle='#f7c873';x.beginPath();x.arc(p.x,p.y,p.r,0,6.29);x.fill()}
+ requestAnimationFrame(loop)})();
+</script>
+</body>
+</html>
